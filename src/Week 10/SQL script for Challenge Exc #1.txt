@@ -1,0 +1,29 @@
+Create Table Company
+(ID int primary key not null,
+ Name text not null,
+ Age int not null,
+ Address char(50),
+ Salary real);
+ 
+Create Table Audit 
+(EMP_ID int not null,
+ ENTRY_DATE text not null);
+ 
+Create Trigger audit_log after insert
+on company
+begin
+insert into Audit(EMP_ID, ENTRY_DATE)
+values
+(new.ID, datetime ('now'));
+end;
+
+insert into Company
+(ID, Name, age, Address, salary)
+values
+(1, 'Paul',32,'CA',200000.00),
+(2, 'Jake',22,'NJ',400000.00),
+(3, 'Jill',42,'TX',500000.00);
+
+select * from audit;
+
+select * from Company;

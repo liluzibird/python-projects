@@ -1,0 +1,24 @@
+import vehicles
+
+def main():
+
+    used_car = vehicles.Automobiles('AUDI',"EX",450000,80000.0,4)
+    used_car1 = vehicles.Automobiles('Toyota',"Supra",450000,80000.0,2)
+    print("Make " , used_car.get_make())
+    print("Model " , used_car.get_model())
+    print("Mileage " , used_car.get_mileage())
+    print("Price " , used_car.get_price())
+    print("# of doors " , used_car.get_doors())
+
+    print("\n")
+    print("Make " , used_car1.get_make())
+    print("Model " , used_car1.get_model())
+    print("Mileage " , used_car1.get_mileage())
+    print("Price " , used_car1.get_price())
+    print("# of doors " , used_car1.get_doors())
+
+main()
+
+
+
+

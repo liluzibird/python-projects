@@ -1,0 +1,9 @@
+alter table Contacts
+add column Gender text;
+
+select * from Contacts;
+
+Update Contacts set gender = 'M' where ContactID = 1;
+Update Contacts set gender = 'F' where ContactID = 2;
+Update Contacts set gender = 'F' where ContactID = 3;
+Update Contacts set gender = 'M' where ContactID = 4;

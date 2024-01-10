@@ -1,0 +1,76 @@
+drop table Contacts;
+
+Create table Contacts
+(ContactID int primary key,
+Name text not null,
+Phone text not null,
+Address text not null,
+Address1 text null,
+City text not null,
+State text not null,
+Constraint ContactID_PK Primary key (ContactID));
+
+drop table Department;
+
+Create Table Department
+(DeptID int primary key,
+ContactID text not null,
+Department text not null,
+Constraint ContactID_FK foreign key (ContactID)
+references Contacts (ContactID));
+
+Select DeptID, Contacts.ContactID,Name,Phone,Address,City,State,
+Department
+from Contacts, Department
+where Contacts.ContactID = Department.ContactID;
+
+insert into Department
+values
+(100, 1, 'Info Tech');
+
+insert into Contacts
+(ContactID, Name, Phone, Address, City, State)
+values
+(1, 'Katie Allen', '555-1234', '111 St', 'Santa Ana', 'CA');
+
+insert into Contacts
+(ContactID, Name, Phone, Address, City, State)
+values
+(1, 'Katie Allen', '555-1234', '112 St', 'Santa Ana', 'CA'),
+(2, 'Jill Ammons', '555-5678', '112 St', 'Santa Ana', 'CA'),
+(3, 'Kevin Brown', '555-9012', '113 St', 'Irvine', 'CA'),
+(4, 'Elsa Garcia', '555-3456', '114 St', 'Garden Grove', 'CA'),
+(5, 'Jeff Jenkins', '555-7890', '114 St', 'Garden Grove', 'CA'),
+(6, 'Jeff Jenkins', '555-7890', '114 St', 'Garden Grove', 'CA');
+
+
+select * from Contacts;
+
+
+Create Table COMPANY(
+ID INT PRIMARY KEY    NOT NULL,
+NAME    TEXT    NOT NULL,
+AGE    INT    NOT NULL,
+ADDRESS    CHAR(50),
+SALARY    REAL);
+
+CREATE TABLE AUDIT(
+EMP_ID INT NOT NULL,
+ENTRY_DATE TEXT NOT NULL);
+
+CREATE TRIGGER AUDIT_LOG AFTER INSERT
+ON COMPANY
+BEGIN
+INSERT INTO AUDIT(EMP_ID, ENTRY_DATE) VALUES (new.ID, datetime('now'));
+values
+(new.ID, datetime ('now'));
+END;
+
+INSERT INTO COMPANY
+(ID, NAME, AGE, ADDRESS, SALARY)
+VALUES
+(1, 'Paul', 32, 'California', 20000.00),
+(2, 'Jake', 22, 'New Jersey', 40000.00),
+(3, 'Jill', 42, 'Texas', 50000.00);
+
+select * From audit;
